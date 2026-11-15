@@ -14,4 +14,4 @@ stage: fp_addsub
 modules:
   fp_addsub:
     source_files:
-      - FP_AddSub/rtl.sv
+      - FP_AddSub/fp_addsub.sv
