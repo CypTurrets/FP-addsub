@@ -148,13 +148,13 @@ module fp_addsub (
                 // Align exponents
                 // --------------------------------
 
-                if ((ea == 0 ? 1 : integer'(ea)) >=
-                    (eb == 0 ? 1 : integer'(eb))) begin
+                if ((ea == 0 ? 1 : $signed({24'b0,ea})) >=
+                    (eb == 0 ? 1 : $signed({24'b0,eb}))) begin
 
-                    exponent = (ea == 0) ? 1 : integer'(ea);
+                    exponent = (ea == 0) ? 1 : $signed({24'b0,ea});
 
                     diff = exponent -
-                           ((eb == 0) ? 1 : integer'(eb));
+                           ((eb == 0) ? 1 : $signed({24'b0,eb}));
 
                     xb = shift_right_jam(xb, diff);
 
@@ -162,10 +162,10 @@ module fp_addsub (
 
                 else begin
 
-                    exponent = (eb == 0) ? 1 : integer'(eb);
+                    exponent = (eb == 0) ? 1 : $signed({24'b0,eb});
 
                     diff = exponent -
-                           ((ea == 0) ? 1 : integer'(ea));
+                           ((ea == 0) ? 1 : $signed({24'b0,ea}));
 
                     xa = shift_right_jam(xa, diff);
 
